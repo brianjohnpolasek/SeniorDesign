@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Motor Failure Detection</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="images/BrianEmote.png">
+
+<style>
+{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #3b5998;
+    padding: 10px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: 300px; /* only for demonstration, should be removed */
+    background: #ccc;
+    padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    background-color: #f1f1f1;
+    height: 1000px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+	position: fixed;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<!--
+<body background="images/10_29.jpg">
+-->
+
+<header>
+  <h2>Machine Learning Data</h2>
+</header>
+
+<section>
+  
+  <article>
+    <h1>Select the model of motor to test: </h1>
+    <input id="file" type="file" />
+    
+	<script>
+		var filesInput = document.getElementById("file");
+		filesInput.addEventListener("change", function (event) {
+		var files = event.target.files;
+		var file = files[0];
+		var reader = new FileReader();
+		reader.addEventListener("load", function (event) {
+			//~ var textFile = event.target;
+			//~ alert(textFile.result);
+			var textFile = event.target;
+			var array = textFile.result.split(',');
+			var winner = Math.floor((Math.random() * array.length) + 1);
+			alert('The winner is...\n' + array[winner]);
+		});
+		reader.readAsText(file);
+	});
+	</script>
+	
+	<div style="padding: 50px 50px">
+	  <center><img src="../images/tensorboard-histograms.png" alt="tensorflow" width=80%></center>
+	</div>
+
+  </article>
+ 
+</section>
+
+<!--
+<footer>
+	<img src="images/Github.png" alt="Github" width=3%>
+</footer>
+-->
+
+</body>
+</html>
