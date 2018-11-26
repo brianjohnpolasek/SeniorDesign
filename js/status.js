@@ -25,4 +25,5 @@ function healthy(){
 function unhealthy(){
 	document.getElementById("status").innerHTML = "Potential Failure";
 	document.getElementById("status").style.color = "red";
+	alert("Potential Failure!");
 }

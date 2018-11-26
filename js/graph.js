@@ -1,7 +1,7 @@
 function checkFile(selectedFile){
 	if (selectedFile == true){
 		plotData();
-		evaluateStatus(1);
+		evaluateStatus(ML_output);
 		//~ var elmnt = document.getElementById("statusDiv");
 		//~ elmnt.scrollIntoView();
 	}
