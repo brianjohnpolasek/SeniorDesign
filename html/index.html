@@ -1,53 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SeniorDesign</title>
+<title>Acoustic Motor Failure Detection</title>
 <meta charset="UTF-8" content="width-=device-width, initial-scale=1">
 
 <!-- Links-->
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="../images/BrianEmote.png">
+<script src="../js/FileIO.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="../js/plotly.min.js"></script>
+<script src="../js/graph.js"></script>
+<script src="../js/status.js"></script>
 
 </head>
 
-<body class="page">
+<body class="page" background="../images/9_29.jpg" onload="evaluateStatus(0);">
 	
 <div class="nav">
   <a class="active" href="#index"></a>
   <a href="login.html">Logout</a>
   <a href="testbench.html">TestBench</a>
+  <a href="ml.html#ml">Machine Learning</a>
   <a href="#Dashboard">Dashboard</a>
 </div>
 
-<div class="parallax"></div>
-
-</head>
-<!--
-<body background="images/10_29.jpg">
--->
-
 <div class="title" id="Dashboard">
-  <h2>Motor Status</h2>
+	<hr>
+  <h2>Dashboard</h2>
 </div>
-
-<!--
-<iframe src="../files/ML_output.txt"></iframe> 
--->
 
 <section>
   
-  <article>
+	<script type='text/javascript' > 
+		var selectedFile = false; 
+		var liveData = false; 
+	</script>
 	
-	<div style="padding: 50px 50px">
-	  <center><img src="../images/tensorboard-histograms.png" alt="tensorflow" width=80%></center>
+	<!-- Motor Status-->
+	<div class="sectionStatus">
+		<div style="font-size: 2em;">Motor Status</div>
+		<div id="status" style="font-size: 5em;"></div>
+	</div>
+	
+	<!-- Plotly Graph-->
+	<div class="section">
+		<div class="wrapper">
+			<div id="chart"></div>
+		</div>
+	</div>
+	<!-- Motor Selection -->
+	<div class="section">
+		<h1>Select the model of motor to test: </h1>
+		<input id="file" type="file" />
+		
+		<script>
+			var filesInput = document.getElementById("file");
+			filesInput.addEventListener("change", function (event) {
+				var files = event.target.files;
+				var file = files[0];
+				var reader = new FileReader();
+				reader.addEventListener("load", function (event) {
+					//~ var textFile = event.target;
+					//~ alert(textFile.result);
+					var textFile = event.target;
+					var array = textFile.result.split(',');
+					var winner = Math.floor((Math.random() * array.length) + 1);
+					//~ alert('The winner is...\n' + array[winner]);
+					selectedFile = true;
+					alert('File successfully loaded');
+				});
+				reader.readAsText(file);
+			});
+			</script>
+	</div>
+	
+	<div class="section">
+		<h2>Determine Motor Status</h2>
+		<input type="button" value="Evaluate Motor" onclick="checkFile(selectedFile);" style="width: 10%; height: 40px;">
+		<p>*Make sure you have followed the instructions <a href="#instructions">here</a> before evaluating the motor.</p>
 	</div>
 	
 <!--
-	<object data="../files/ML_output.txt" style="font-size:35px;"></object>
+	<div class="section">
+		<input type="button" value="Show Realtime Data" onclick="plotData();">
+	</div>
 -->
-
-  </article>
- 
+    
 </section>
 
 <footer id="contact" class="footer">
@@ -55,7 +95,43 @@
   &nbsp;
   &nbsp;
   <a href="https://www.linkedin.com/in/brian-polasek-826b54a2"><img src="../images/LinkedInIcon-32px.png" alt="LinkedIn"></a>
+  &nbsp;
+  &nbsp;
+  <a href="https://angular.io/"><img src="../images/Angular-32px.jpg" alt="Angular"></a>
+  &nbsp;
+  &nbsp;
+  <a href="https://www.tensorflow.org/"><img src="../images/Tensorflow-32px.jpg" alt="Tensorflow"></a>
+  &nbsp;
+  &nbsp;
+  <a href="https://plot.ly/"><img src="../images/Plotly-32px.jpeg" alt="Plotly"></a>
 </footer>
 
 </body>
 </html>
+
+<!--
+        <script>
+            function getData() {
+                return Math.random();
+            }  
+            Plotly.plot('chart',[{
+                y:[getData()],
+                type:'line'
+            }]);
+            
+            var cnt = 0;
+            var maxcnt = 200;
+            var interval = 0.001
+            setInterval(function(){
+                Plotly.extendTraces('chart',{ y:[[getData()]]}, [0]);
+                cnt++;
+                if(cnt > maxcnt) {
+                    Plotly.relayout('chart',{
+                        xaxis: {
+                            range: [cnt-maxcnt,cnt]
+                        }
+                    });
+                }
+            },interval);
+        </script>
+-->

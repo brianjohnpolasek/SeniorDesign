@@ -5,6 +5,10 @@
 .nav{
 	overflow: hidden;
 	background-color: Grey;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
 }
 
 .nav a{
@@ -28,7 +32,7 @@
 
 .parallax {
     /* The image used */
-    background-image: url("../images/9_29.jpg");
+    background-image: url("../images/PhysicsBuilding.jpg");
 
     /* Set a specific height */
     min-height: 500px; 
@@ -63,7 +67,7 @@
 article {
     text-align: center;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
     width: 80%;
     background-color: #f1f1f1;
     height: 1000px; /* only for demonstration, should be removed */
@@ -72,10 +76,19 @@ article {
 .section{
 	background-color: #404040;
 	text-align: center;
-	padding: 20px 20px;
+	padding: 20px 10px;
 	width: 90%;
 	margin: auto;
-	color: #dddddd
+	color: #dddddd;
+}
+
+.sectionStatus{
+	background-color: #252525;
+	text-align: center;
+	padding: 20px 10px;
+	width: 90%;
+	margin: auto;
+	color: #dddddd;
 }
 
 /* Clear floats after the columns */
@@ -99,7 +112,7 @@ article {
 .page{
 	background-position: center;
     background-size: cover;
-	background-image: url("images/some-good-wallpapers.jpg");
+	background-image: url("../images/9_29.jpg");
 	padding-bottom: 70px;
 }
 

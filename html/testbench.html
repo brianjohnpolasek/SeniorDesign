@@ -7,11 +7,24 @@
 <!-- Links-->
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="../images/BrianEmote.png">
-<script src="../js/FileIO.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="../js/plotly.min.js"></script>
-<script src="../js/graph.js"></script>
+
+<!--
+<script src="https://d3js.org/d3.v4.min.js"></script>
+-->
+
+<meta charset="utf-8">
+<style>
+	table {
+		border-collapse: collapse;
+		border: 2px black solid;
+		font: 12px sans-serif;
+	}
+
+	td {
+		border: 1px black solid;
+		padding: 5px;
+	}
+</style>
 
 </head>
 
@@ -21,97 +34,74 @@
   <a class="active" href="#index"></a>
   <a href="login.html">Logout</a>
   <a href="#TestBench#Testbench">TestBench</a>
+  <a href="ml.html#ml">Machine Learning</a>
   <a href="index.html#Dashboard">Dashboard</a>
 </div>
 
+<hr>
+
 <div class="title" >
-  <h2>Test Bench</h2>
+	<hr>
+	<h2>Test Bench</h2>
 </div>
 
-<!--
-<div id="test"></div>
--->
+<div class="section">
+	<iframe src="https://docs.google.com/spreadsheets/d/1z-AK8m_CDSZ9BqYRfLPrPwS2NXI_yDMdFoM3V8iBSvA/edit?usp=sharing" style="width:100%; height:700px;"></iframe>
+</div>
+
+
+<script src="../js/d3.min.js"></script>
+
+<script type="text/javascript"charset="utf-8">
+	d3.text("../files/motors.csv", function(data) {
+		var parsedCSV = d3.csv.parseRows(data);
+		var container = d3.select("body")
+			.append("table")
+			.selectAll("tr")
+				.data(parsedCSV).enter()
+				.append("tr")
+			.selectAll("td")
+				.data(function(d) { return d; }).enter()
+				.append("td")
+				.text(function(d) { return d; });
+	});
+</script>
 
 <!--
-<div id="#demo"></div>
+<script type="text/javascript" charset="utf-8">
+	d3.text("../files/motors.csv", function(data) {
+		var parsedCSV = d3.csvParseRows(data);
 
-<script>
-document.getElementById("#demo").innerHTML = "Hello, World!";
+		var container = d3.select("body")
+			.append("table")
+
+			.selectAll("tr")
+				.data(parsedCSV).enter()
+				.append("tr")
+
+			.selectAll("td")
+				.data(function(d) { return d; }).enter()
+				.append("td")
+				.text(function(d) { return d; });
+	});
 </script>
 -->
-	<script type='text/javascript' > 
-		var selectedFile = false; 
-	</script>
 
-	<!-- Motor Selection -->
-	<div class="section">
-		<h1>Select the model of motor to test: </h1>
-		<input id="file" type="file" />
-		
-		<script>
-			var filesInput = document.getElementById("file");
-			filesInput.addEventListener("change", function (event) {
-				var files = event.target.files;
-				var file = files[0];
-				var reader = new FileReader();
-				reader.addEventListener("load", function (event) {
-					//~ var textFile = event.target;
-					//~ alert(textFile.result);
-					var textFile = event.target;
-					var array = textFile.result.split(',');
-					var winner = Math.floor((Math.random() * array.length) + 1);
-					//~ alert('The winner is...\n' + array[winner]);
-					selectedFile = true;
-					alert('File successfully loaded');
-				});
-				reader.readAsText(file);
-			});
-			</script>
-	</div>
-
-	<!-- Plotly Graph Logic-->
-	<div class="section">
-		<p>Make sure you have followed the instructions <a href="#instructions">here</a> before viewing the realtime data.</p>
-		<input type="button" value="Show Realtime Data" onclick="checkFile(selectedFile);">
-<!--
-		<input type="button" value="Show Realtime Data" onclick="plotData();">
--->
-	</div>
-	<div class="wrapper">
-        <div id="chart"></div>
-<!--
-        <script>
-            function getData() {
-                return Math.random();
-            }  
-            Plotly.plot('chart',[{
-                y:[getData()],
-                type:'line'
-            }]);
-            
-            var cnt = 0;
-            var maxcnt = 200;
-            var interval = 0.001
-            setInterval(function(){
-                Plotly.extendTraces('chart',{ y:[[getData()]]}, [0]);
-                cnt++;
-                if(cnt > maxcnt) {
-                    Plotly.relayout('chart',{
-                        xaxis: {
-                            range: [cnt-maxcnt,cnt]
-                        }
-                    });
-                }
-            },interval);
-        </script>
--->
-    </div>
 
 <footer id="contact" class="footer">
   <a href="https://github.com/brianjohnpolasek"><img src="../images/GitHub-Mark-32px.png" alt="Github Mark"></a>
   &nbsp;
   &nbsp;
   <a href="https://www.linkedin.com/in/brian-polasek-826b54a2"><img src="../images/LinkedInIcon-32px.png" alt="LinkedIn"></a>
+  &nbsp;
+  &nbsp;
+  <a href="https://angular.io/"><img src="../images/Angular-32px.jpg" alt="Angular"></a>
+  &nbsp;
+  &nbsp;
+  <a href="https://www.tensorflow.org/"><img src="../images/Tensorflow-32px.jpg" alt="Tensorflow"></a>
+  &nbsp;
+  &nbsp;
+  <a href="https://plot.ly/"><img src="../images/Plotly-32px.jpeg" alt="Plotly"></a>
 </footer>
 
 </body>

@@ -1,13 +1,16 @@
 function checkFile(selectedFile){
 	if (selectedFile == true){
 		plotData();
+		evaluateStatus(1);
+		//~ var elmnt = document.getElementById("statusDiv");
+		//~ elmnt.scrollIntoView();
 	}
 	else{
-		alert('File not yet selected.');
+		alert('File not yet selected. Please Select a the type of motor to test.');
 	}
 }
-function getData() {
-    return Math.random();
+function getData(toggle) {
+	return Math.random();
 }  
 function plotData() {
 	Plotly.plot('chart',[{
