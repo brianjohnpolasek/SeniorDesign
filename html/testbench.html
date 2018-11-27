@@ -7,6 +7,7 @@
 <!-- Links-->
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="../images/BrianEmote.png">
+<script src="../js/validate.js"></script>
 
 <!--
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -56,29 +57,29 @@
 	<form id="Login" method="post" name="myform">
 	<label>Amperage :</label>
 	<div class="form-group">
-	<input type="email" class="form-control" name="username" id="username"/>
+	<input type="name" class="form-control" name="amperage" id="amperage"/>
 	</div><br>
 	<label>Voltage :</label>
 	<div class="form-group">
-	<input type="password" class="form-control" name="password" id="password"/>
+	<input type="name" class="form-control" name="voltage" id="voltage"/>
 	</div><br>
 	<label>Wiring :</label>
 	<div class="form-group">
-	<input type="password" class="form-control" name="password" id="password"/>
+	<input type="name" class="form-control" name="wiring" id="wiring"/>
 	</div><br>
 	<label>Brand :</label>
 	<div class="form-group">
-	<input type="password" class="form-control" name="password" id="password"/>
+	<input type="name" class="form-control" name="brand" id="brand"/>
 	</div><br>
 	<label>Model :</label>
 	<div class="form-group">
-	<input type="password" class="form-control" name="password" id="password"/>
+	<input type="name" class="form-control" name="model" id="model"/>
 	</div><br>
 	<label>Connector :</label>
 	<div class="form-group">
-	<input type="password" class="form-control" name="password" id="password"/>
+	<input type="name" class="form-control" name="connector" id="connector"/>
 	</div><br>
-	<input type="submit" value="Submit" id="submit" onclick="validate()"/>
+	<input type="submit" value="Submit" id="submit" onclick="validateMotor()"/>
 	</form>
 </div>
 
