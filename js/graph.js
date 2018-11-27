@@ -9,8 +9,14 @@ function checkFile(selectedFile){
 		alert('File not yet selected. Please Select a the type of motor to test.');
 	}
 }
-function getData(toggle) {
-	return Math.random();
+function getData() {
+	if (ML_output == 1){
+		//~ return Math.random();
+		return getRandomInt(1430);
+	}
+	if (ML_output == 2){
+		return getRandomInt(1000);
+	}
 }  
 function plotData() {
 	Plotly.plot('chart',[{
@@ -32,4 +38,8 @@ function plotData() {
 		    });
 		}
 	},interval);
+}
+
+function getRandomInt(max) {
+	return Math.floor(Math.random() * Math.floor(max));
 }

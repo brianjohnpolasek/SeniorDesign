@@ -8,7 +8,7 @@ function evaluateStatus(status){
 		setTimeout(healthy, 4000);
 	}
 	if (status == 2){
-		setTimeout(unhealthy, 2000);
+		setTimeout(unhealthy, 6000);
 	}
 }
 
@@ -26,4 +26,5 @@ function unhealthy(){
 	document.getElementById("status").innerHTML = "Potential Failure";
 	document.getElementById("status").style.color = "red";
 	alert("Potential Failure!");
+	addRow();
 }

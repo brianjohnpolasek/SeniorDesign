@@ -5,16 +5,21 @@
 <meta charset="UTF-8" content="width-=device-width, initial-scale=1">
 
 <!-- Links-->
-<link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="../images/BrianEmote.png">
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/table.css">
+
+
 <script src="../js/FileIO.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="../js/plotly.min.js"></script>
 <script src="../js/graph.js"></script>
 <script src="../js/status.js"></script>
 <script src="../js/MachineLearning.js"></script>
+<script src="../js/TableBuilder.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body class="page" background="../images/9_29.jpg" onload="evaluateStatus(0);">
@@ -81,6 +86,64 @@
 		<h2>Determine Motor Status</h2>
 		<input type="button" value="Evaluate Motor" onclick="checkFile(selectedFile);" style="width: 10%; height: 40px;">
 		<p>*Make sure you have followed the instructions <a href="#instructions">here</a> before evaluating the motor.</p>
+	</div>
+	
+	<div class="section">
+		<h2>Portential Failure Logs</h2>
+		<table class="container" id="logs">
+			<thead>
+				<tr>
+					<th><h1>Date</h1></th>
+					<th><h1>Time</h1></th>
+					<th><h1>Motor Type</h1></th>
+					<th><h1>User</h1></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>2018/11/25</td>
+					<td>9:14</td>
+					<td>Kanrich</td>
+					<td>Kenneth</td>
+				</tr>
+				<tr>
+					<td>2018/11/22</td>
+					<td>7:32</td>
+					<td>Mechatronics</td>
+					<td>Eric</td>
+				</tr>
+				<tr>
+					<td>2018/11/22</td>
+					<td>10:16</td>
+					<td>DATECH</td>
+					<td>Joshua</td>
+				</tr>
+			<tr>
+					<td>2018/11/15</td>
+					<td>12:54</td>
+					<td>Mechatronics</td>
+					<td>Joshua</td>
+				</tr>
+			<tr>
+					<td>2018/11/02</td>
+					<td>11:02</td>
+					<td>Fonsan</td>
+					<td>Brian</td>
+				</tr>
+			<tr>
+					<td>2018/10/28</td>
+					<td>7:23</td>
+					<td>Fonsan</td>
+					<td>Eric</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<button>Load More</button>
+	
+<!--
+	<button onclick="addRow()">Try it</button>
+-->
 	</div>
 	
 <!--
